@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package message;
+
+service Greeter {
+  rpc Model1Request (Model1RequestMessage) returns (Model1ResponseMessage) {}
+  rpc Model2Request (Model2RequestMessage) returns (Model2ResponseMessage) {}
+  rpc Model3Request (Model3RequestMessage) returns (Model3ResponseMessage) {}
+}
+
+message Model1RequestMessage {
+  string model_id = 1;
+  string user_id = 2;
+  string username = 3;
+}
+
+message Model1ResponseMessage {
+  string code = 1;
+  string url = 2;
+  string user_id = 3;
+  string username = 4;
+  string model_id = 5;
+}
+
+message Model2RequestMessage {
+  string code = 1;
+  string url = 2;
+  string user_id = 3;
+  string model_id = 4;
+}
+
+message Model2ResponseMessage {
+  string code = 1;
+  string url = 2;
+  string user_id = 3;
+  string model_id = 4;
+}
+
+message Model3RequestMessage {
+  string code = 1;
+  string url = 2;
+  string model_id = 3;
+}
+
+message Model3ResponseMessage {
+  string code = 1;
+  string url = 2;
+  string model_id = 3;
+}
