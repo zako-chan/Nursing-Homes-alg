@@ -1,5 +1,5 @@
-SERVER_HOST = 'localhost'
-SERVER_PORT = 50051
+SERVER_HOST = 'http://scnqit.natappfree.cc'
+SERVER_PORT = 9380
 
 CLIENT_HOST = 'localhost'
 CLIENT_PORT = 50052
