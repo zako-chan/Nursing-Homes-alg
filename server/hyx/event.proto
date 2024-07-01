@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option java_package = "com.example.ex3_2_back.grpc.server.event";
+option java_outer_classname = "EventServiceProto";
+option java_multiple_files = true;
+option java_generic_services = true;
+
+package event;
+
+message EventServerResopnse{
+    string message = 1;
+    int32 code = 2;
+    string data = 3;
+}
+
+// 0-情感检测
+// 1-义工交互
+// 2-陌生人检测
+// 3-跌倒检测
+// 4-禁止区域入侵检测
+//message EventRequest{
+//    int32 eventType = 1;
+//    string eventDate = 2;
+//    string eventLocation = 3;
+//    string eventDescription = 4;
+//    int32 elderlyId = 5;
+//}
+
+message EmotionDetectionEventRequest{
+    int32 elderlyId = 1;
+    string imageUrl = 2;
+}
+
+message VolunteerInteractionEventRequest{
+    int32 elderlyId = 1;
+    int32 volunteerId = 2;
+    string imageUrl = 3;
+}
+
+message StrangerDetectionEventRequest{
+    string imageUrl = 1;
+}
+
+message FallDetectionEventRequest{
+    string imageUrl = 1;
+}
+
+message ForbiddenAreaInvasionDetectionEventRequest{
+    string imageUrl = 1;
+}
+
+service EventService {
+//    rpc CreateEvent(EventRequest) returns (EventServerResopnse);
+    rpc EmotionDetectionEvent(EmotionDetectionEventRequest) returns (EventServerResopnse);
+    rpc VolunteerInteractionEvent(VolunteerInteractionEventRequest) returns (EventServerResopnse);
+    rpc StrangerDetectionEvent(StrangerDetectionEventRequest) returns (EventServerResopnse);
+    rpc FallDetectionEvent(FallDetectionEventRequest) returns (EventServerResopnse);
+    rpc ForbiddenAreaInvasionDetectionEvent(ForbiddenAreaInvasionDetectionEventRequest) returns (EventServerResopnse);
+}
+

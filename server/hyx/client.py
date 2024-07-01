@@ -93,4 +93,5 @@ def run_client():
         logging.error(f"Error running client: {e}")
 
 if __name__ == '__main__':
-    run_client()
+    # run_client()
+    serve_client()
