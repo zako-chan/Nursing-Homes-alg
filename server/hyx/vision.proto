@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_package = "com.example.ex3_2_back.grpc.server.vision";
+option java_outer_classname = "VisionProto";
+option java_multiple_files = true;
+option java_generic_services = true;
+
+package vision;
+
+service VisionService {
+  rpc FaceCollection(FaceCollectionRequest) returns (CommonResopnse);
+  rpc RemoveUrl(RemoveUrlRequest) returns (CommonResopnse);
+  rpc StartVisonService(StartVisonServiceRequest) returns (CommonResopnse);
+}
+
+//model_id: 1-采集头像 2-入侵检测
+// identity elderly employee volunteer
+message FaceCollectionRequest{
+  int32 user_id = 1;
+  string identity = 2;
+  string username = 3;
+  string pull_url = 4; //算法从该地址拉流
+  string push_url = 5; // 算法向该地址推流
+}
+
+message RemoveUrlRequest{
+  int32 user_id = 1;
+  string identity = 2;
+  string username = 3;
+}
+
+message CommonResopnse{
+  int32 code = 1;
+  string message = 2;
+}
+
+// model_id: 1-人脸识别 2-摔倒检测 3-入侵检测
+message StartVisonServiceRequest{
+  int32 camera_id = 1;
+  string pull_url = 2; //算法从该地址拉流
+  string push_url = 3; // 算法向该地址推流
+  int32 model_id = 4;
+}

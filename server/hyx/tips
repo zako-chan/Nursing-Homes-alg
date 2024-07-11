@@ -1,0 +1,5 @@
+you need to install
+some maybe error in requirements
+you need use deepface first to download the model
+conda install -c conda-forge dlib
+pip install opencv-python deepface
